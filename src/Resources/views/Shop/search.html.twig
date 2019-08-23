@@ -18,10 +18,10 @@
     <div class="ui stackable grid">
         <div class="four wide column">
             <div id="filters-vertical" class="ui fluid vertical menu">
-                <div class="header item">
+                {#<div class="header item">
                     {{ 'bitbag_sylius_elasticsearch_plugin.ui.filter_results'|trans }}
                 </div>
-                {{ form_start(searchForm, {'attr': {'class': 'ui loadable form', 'novalidate': 'novalidate'}}) }}
+                {{ form_start(searchForm, {'attr': {'class': 'ui loadable form form-inline', 'novalidate': 'novalidate'}}) }}
                     <div style="display: none;">
                         {{ form_row(searchForm.box) }}
                     </div>
@@ -35,18 +35,15 @@
                         </button>
                     </div>
                 {{ form_end(searchForm) }}
-            </div>
+            </div>#}
         </div>
         <div class="twelve wide column">
             {% if results|length > 0 %}
-                <div class="ui three column stackable grid" id="search_results">
-                    {% for product in results %}
-                        <div class="column result">
-                            {% include '@SyliusShop/Product/_box.html.twig' %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="ui hidden divider"></div>
+                {% for product in results %}
+                    <div class="col-lg-3 col-sm-4 mb-3">
+                        {% include '@SyliusShop/Product/_box.html.twig' %}
+                    </div>
+                {% endfor %}
 
                 {{ pagination.simple(results) }}
             {% else %}
